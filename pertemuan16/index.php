@@ -1,10 +1,12 @@
 <?php
-session_start() ;
+
+include 'functions.php';
+error_reporting(0);
+session_start();
 if ( !isset($_SESSION["login"])) {
-    header("location : login.php");
+    header("location: login.php");
     exit;
 }
-require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
 // Jika tombol cari di pencet
 if (isset($_POST["cari"])) {
@@ -24,20 +26,16 @@ if (isset($_POST["cari"])) {
     <title>Halaman Admin</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="js/bootstrap.min.js">
-    <style>
-        body{
-            background-image: url(img/gmb2.png);
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body class=" m-5">
     <h1>Daftar Mahasiswa</h1> 
-    <a href="tambah.php">Tambah Data Mahasiswa</a> 
+    <a href="tambah.php" class="add">Tambah Data Mahasiswa</a> 
     <br><br>
     <form class="d-flex" action="" method="POST">
         <input class="" type="text" placeholder="Cari Data Mahasiswa" size="50" autofocus name="keyword" autocomplete="off">
         <button class="btn btn-outline-success" type="submit" name="cari">Search</button>
-      </form>
+    </form>
       <br>
     <table border="1" cellpadding="10" cellspacing="0">
     <tr>
@@ -58,7 +56,7 @@ if (isset($_POST["cari"])) {
             <a href="ubah.php?id=<?= $row["id"] ; ?>">Ubah</a> |
             <a href="hapus.php?id=<?= $row["id"] ; ?>" onclick="return confirm('yakin mau di hapus deck?');">Hapus</a>
         </td>
-        <td><img src="img/<?= $row["gambar"] ; ?>" alt="adi" width="50px"></td>
+        <td class="img"><img src="img/<?= $row["gambar"] ; ?>" alt="adi"></td>
         <td><?= $row["nis"] ; ?></td>
         <td><?= $row["nama"] ; ?></td>
         <td><?= $row["email"] ; ?></td>
@@ -69,6 +67,6 @@ if (isset($_POST["cari"])) {
 
 
     </table>
-
+<a href="logout.php" class="logout">logout</a>
 </body>
 </html>

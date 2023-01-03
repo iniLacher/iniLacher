@@ -1,6 +1,11 @@
 <?php 
 require 'functions.php';
 $mahasiswa = query("SELECT * FROM mahasiswa");
+// Jika tombol cari di pencet
+if (isset($_POST["cari"])) {
+    $mahasiswa = cari ($_POST["keyword"]);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,6 +56,16 @@ $mahasiswa = query("SELECT * FROM mahasiswa");
 	<?php endforeach; ?>
 	
 </table>
+<div class="row row-cols-4 row-cols-md-2 g-4">
+  <div class="col">
+    <div class="card">
+      <img src="../pertemuan16/img/<?= $row["gambar"]; ?>" width="50px" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><?= $row["nama"]; ?></h5>
+        <p class="card-text"><?= $row["nis"]; ?></p>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

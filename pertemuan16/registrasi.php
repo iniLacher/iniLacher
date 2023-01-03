@@ -1,6 +1,10 @@
 <?php 
 require 'functions.php';
-
+session_start();
+if ( !isset($_SESSION["login"])) {
+    header("location: login.php");
+    exit;
+}
 if( isset($_POST["register"]) ) {
 
     if (registrasi ($_POST)  > 0 ){
@@ -23,40 +27,35 @@ if( isset($_POST["register"]) ) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Registrasi</title>
-    <style>
-        label {
-            display: block;
-        }
-    </style>
+    <link rel="stylesheet" href="css/registrasi.css">
 </head>
 <body>
-    <h1>Silahkan Daftar Terlebih Dahulu</h1>
-
-
-    <form action="" method="POST">
-
-        <ul>
-            <li>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
-            </li>
-            <li>
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password">
-            </li>
-            <li>
-                <label for="password2">Konfirmasi Password</label>
-                <input type="password" name="password2" id="password2">
-            </li>
-            <li>
-                <button type="submit" name="register">REGISTER</button>
-            </li>
-        </ul>
-
-        
-        
-    </form>
-
-
+<form action="" method="post">
+	<div class="box">
+		<div class="form">
+		<h1>Daftar</h1>
+			<div class="inputBox">
+				<input type="text" name="username" required autofocus autocomplete="off">
+				<span>Username</span>
+				<i></i>
+			</div>
+			<div class="inputBox">
+				<input type="password" name="password" required>
+				<span>Password</span>
+				<i></i>
+			</div>
+            <div class="inputBox">
+				<input type="password" name="password2" required>
+				<span>Konfirmasi Password</span>
+				<i></i>
+			</div>
+			<div class="links">
+				<a href="#">Lupa Password?</a>
+				<a href="login.php">Login</a>
+			</div>
+			<input type="submit" name="register" value="Daftar">
+		</div>
+	</div>
+</form>
 </body>
 </html>

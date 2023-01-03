@@ -28,10 +28,6 @@ function tambah($data){
         return false;
     }
 
-
-
-
-
     $query = "INSERT INTO
                 mahasiswa
                 VALUES
@@ -79,7 +75,7 @@ function upload () {
                 alert('Gambar yang anda masukkan melebihi 1MB');
             </script>";
     return false;
-    }; 
+    } 
     $namaFilebaru = uniqid();
     $namaFilebaru .= '.';
     $namaFilebaru .= $ektensiGambar;
@@ -147,6 +143,14 @@ function registrasi($data) {
 	$username = strtolower(stripslashes($data["username"]));
 	$password = mysqli_real_escape_string($conn, $data["password"]);
 	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+    // Jika username atau password kosong
+    if(empty($username) || empty($password) || empty($password2)) {
+        echo "<script>
+				alert('Mau Ngapain?? hah,Isi dulu form nya anj!')
+                document.location.href ='registrasi.php';
+		      </script>";
+    return false;
+    }
 
 	// cek username sudah ada atau belum
 	$result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username'");

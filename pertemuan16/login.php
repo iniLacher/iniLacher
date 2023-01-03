@@ -1,6 +1,11 @@
 <?php 
 session_start();
-require 'functions.php';
+error_reporting(0);
+include 'functions.php';
+if( isset($_SESSION["login"])){
+    header("Location: index.php");
+    exit();
+}
 
 if( isset($_POST["login"]) ) {
 
@@ -33,31 +38,34 @@ if( isset($_POST["login"]) ) {
 <html>
 <head>
 	<title>Halaman Login</title>
+	<link rel="stylesheet" href="css/login.css">
 </head>
 <body>
 
-<h1>Halaman Login</h1>
-
-<?php if( isset($error) ) : ?>
-	<p style="color: red; font-style: italic;">username / password salah</p>
-<?php endif; ?>
-
 <form action="" method="post">
-
-	<ul>
-		<li>
-			<label for="username">Username :</label>
-			<input type="text" name="username" id="username">
-		</li>
-		<li>
-			<label for="password">Password :</label>
-			<input type="password" name="password" id="password">
-		</li>
-		<li>
-			<button type="submit" name="login">Login</button>
-		</li>
-	</ul>
-	
+	<div class="box">
+		<div class="form">
+		<h1>Login</h1>
+		<?php if( isset($error) ) : ?>
+			<p style="color: #45f3ff; text-align: center; font-style: italic;">username / password salah</p>
+		<?php endif; ?>
+			<div class="inputBox">
+				<input type="text" name="username" required autofocus autocomplete="off">
+				<span>Username</span>
+				<i></i>
+			</div>
+			<div class="inputBox">
+				<input type="password" name="password" required>
+				<span>Password</span>
+				<i></i>
+			</div>
+			<div class="links">
+				<a href="#">Lupa Password?</a>
+				<a href="registrasi.php">Daftar</a>
+			</div>
+			<input type="submit" name="login" value="Login">
+		</div>
+	</div>
 </form>
 
 
