@@ -1,0 +1,72 @@
+body {
+  background-image: url(../img/back.png);
+  background-position: center;
+  background-size: cover;
+}
+.logout {
+  display: inline-block;
+  background: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ff01cf;
+  text-decoration: none;
+  border: 1px solid #ff01cf;
+  border-radius: 5px;
+  padding: 8px 18px;
+  transition: background 0.5s;
+}
+.logout:hover {
+  color: #fff;
+  background: #ff01cf;
+  text-decoration: none;
+}
+
+.container .navbar .cari:hover {
+  background: #ff01cf;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.add {
+  display: inline-block;
+  background: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  color: #ff01cf;
+  text-decoration: none;
+  border: 1px solid #ff01cf;
+  border-radius: 5px;
+  padding: 8px 18px;
+  transition: background 0.5s;
+}
+.add:hover {
+  color: #fff;
+  background: #ff01cf;
+  text-decoration: none;
+}
+input {
+  margin-right: 0;
+  position: relative;
+  width: 20%;
+  padding: 9px;
+  border-radius: 5px;
+  font-size: 1em;
+  letter-spacing: 0, 05em;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ff01cf;
+}
+.img img {
+  max-width: 100px;
+  max-height: 100px;
+}
+.onko {
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  color: black;
+  left: 12;
+  top: 0;
+  border-radius: 13px 2px 3px;
+  position: absolute;
+}

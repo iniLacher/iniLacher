@@ -6,7 +6,20 @@ if ( !isset($_SESSION["login"])) {
     header("location: login.php");
     exit;
 }
-$mahasiswa = query("SELECT * FROM mahasiswa");
+
+// pagination
+// konfigurasi
+$jumlahcard = 3;
+$totalpren = count(query("SELECT * FROM mahasiswa"));
+$jumlahhalaman = ceil($totalpren / $jumlahcard);
+$halamanaktif = ( isset($_GET["page"])) ? $_GET["page"] : 1;
+$awaldata = ( $jumlahcard * $halamanaktif) - $jumlahcard;
+// var_dump($awaldata);
+
+$mahasiswa = query("SELECT * FROM mahasiswa LIMIT $awaldata,$jumlahcard");
+
+
+
 // Jika tombol cari di pencet
 if (isset($_POST["cari"])) {
     $mahasiswa = cari ($_POST["keyword"]);
@@ -61,6 +74,12 @@ if (isset($_POST["cari"])) {
         </div>
         <br>
       <!-- </div> -->
+    </div>
+    <div class="pagination">
+      <?php for($j=1; $j <= $jumlahhalaman; $j++): ?>
+                   <a href="?page=<?= $j ; ?>"><?= $j; ?></a>
+
+      <?php endfor; ?>
     </div>
     <script src="js/vanilla-tilt.js"></script>
   </body>
